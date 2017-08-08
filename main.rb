@@ -13,5 +13,5 @@ end
 
 get '/account/Priya' do
 	accounts = run_csv_processer
-	erb(:account, :locals => {:accounts => accounts}
+	erb(:account, :locals => {:accounts => accounts})
 end

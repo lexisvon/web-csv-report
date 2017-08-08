@@ -53,8 +53,7 @@ def run_csv_processer
 end
   
 #  Display
-
-  #   accounts.each do |name, info|
+  # accounts.each do |name, info|
   #   puts "\n"
   #   puts "======================================================================"
   #   puts "Account: #{name}... Balance: $#{info[:tally].round(2)}"
