@@ -1,17 +1,17 @@
 require "sinatra"
 require_relative "./csv.rb"
+require "pry"
 
 get '/myhomepage' do
-	
 	erb(:main)
 end
 
 get '/full' do
-	account = run_csv_processer 
+	accounts = run_csv_processer
 	erb(:full)
 end
 
-get '/account' do
-	account = run_csv_processer
-	erb(:account)
+get '/account/Priya' do
+	accounts = run_csv_processer
+	erb(:account, :locals => {:accounts => accounts}
 end
