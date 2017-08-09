@@ -3,15 +3,14 @@ require_relative "./csv.rb"
 require "pry"
 
 get '/myhomepage' do
-	erb(:main)
+	accounts = run_csv_processer
 end
 
 get '/full' do
-	accounts = run_csv_processer
-	erb(:full)
+	run_csv_processer
 end
 
-get '/account/Priya' do
+get '/account' do
 	accounts = run_csv_processer
 	erb(:account, :locals => {:accounts => accounts})
 end

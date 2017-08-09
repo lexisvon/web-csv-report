@@ -4,8 +4,21 @@
     	<title>CSV Report</title>
     </head>
 	<body>
-		<h1>This is Priya</h1>
-
-		<%= accounts['Priya'][:categories]["Allowance"][:tally]%>
+		<% accounts.each do |name, info| %>
+		<h1>Account: <%= name%> ... Balance: $<%=info[:tally].round(2) %> "</h1>
+		<hr>
+		<table>
+			<tr>
+				<th>Category</th>
+				<th>Total Spent</th>
+				<th>Average Transaction</th>
+			</tr>
+		<% info[:categories].each do |category, c_info| %>
+			<tr>
+				<td><%= category %></td>
+				<td>$<%= c_info[:tally].round(2).to_s %></td>
+				<td>$<%= c_info[:average_transaction_cost].round(2).to_s %></td>
+				<%end%>
+				<%end%>
 	</body>
 </html>
