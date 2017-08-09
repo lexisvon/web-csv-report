@@ -10,7 +10,7 @@
 		<%accounts.each do |name, info| %>
 		<table>
 			<tr>
-				<th>Account: <%= name%> ... Balance: $<%=info[:tally].round(2) %></th>
+				<th>Account: <%= @name%> ... Balance: $<%=info[:tally].round(2) %></th>
 				<th></th>
 				<th></th>
 			</tr>
@@ -27,5 +27,6 @@
 			<%end%>
 		 </table>
 		 <%end%>
+		 <%= indivacc%>
 	</body>
 </html>

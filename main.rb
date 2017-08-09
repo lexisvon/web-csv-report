@@ -6,12 +6,8 @@ get '/homepage' do
 	erb(:main)
 end
 
-get '/full' do
+get '/account/:name' do
 	accounts = run_csv_processer
-	erb(:full, :locals => {:accounts => accounts})
-end
-
-get '/account' do
-	accounts = run_csv_processer
+	@name = params["name"]
 	erb(:account, :locals => {:accounts => accounts})
 end
