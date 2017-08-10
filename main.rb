@@ -23,12 +23,13 @@ end
 
 # Processes the form that they typed new row values into.
 get '/add_row' do
-  name = "Priya"
-  date = "1/1/2017"
-  payee = "BOB'S BARBER SHOP"
-  category = "Allowance"
-  inflow = "$0.00"
-  outflow = "$3,800.00"
+
+  name = params["account"]
+  date = params["date"]
+  payee = params["payee"]
+  category = params["category"]
+  inflow = params["inflow"]
+  outflow = params["outflow"]
 
   open('temp.txt', 'a') { |file|
     str = ""
