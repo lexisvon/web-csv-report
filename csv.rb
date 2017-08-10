@@ -3,7 +3,6 @@ require "csv"
 def run_csv_processer 
 
   accounts = {}
-  indivacc = accounts[@name]
 
   CSV.foreach("accounts.csv", {headers: true, return_headers: false}) do |row|
     # Add a key for each account to the accounts Hash.
