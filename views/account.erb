@@ -4,11 +4,11 @@
 		<meta charset="utf-8">
 		<meta content="IE=edge" http-equiv="X-UA-Compatible">
 		<meta content="width=device-width, initial-scale=1" name="viewport">
-		<link rel="stylesheet" type="text/css" href="<%= url("/styles.css")%>">
+	<link rel="stylesheet" type="text/css" href="/styles.css">
 		<title><%= name %>'s Account</title>
 	</head>
 	<body>
-		<table>
+		<table class="color">
 			<tr>
 				<th colspan="3">Account: <%= name %> ... Balance: $<%=info[:tally].round(2) %></th>
 			</tr>
