@@ -56,17 +56,29 @@ get '/account/:name' do
 end
 
 get '/full' do
+ if logged_in(params["name"])
 	accounts = run_csv_processer
 	erb(:full, :locals => {:accounts => accounts})
+ else
+    redirect "/"
+ end
 end
 
 # Showing the form that they type new row values into.
 get '/add_row_form' do
+if logged_in(params["name"])
   erb(:add_row_form)
+ else
+    redirect "/"
+ end
 end
 
 # Processes the form that they typed new row values into.
 get '/add_row' do
+ if logged_in(params["name"])
   success = add_row_function
   erb(:success)
+ else
+    redirect "/"
+ end
 end
