@@ -3,6 +3,11 @@ require_relative "./csv.rb"
 require_relative "./add_row_function"
 enable :sessions
 
+USERS = {
+  "sonia" => "imsonia",
+  "priya" => "impriya"
+}
+
 # Showing the form for login
 get '/' do
   erb(:login)
@@ -10,9 +15,15 @@ end
 
 get '/user_logged_in' do
 	#find info
-	user = (name = params["name"], password = params["password"])
-	session[:name] = params["name"]
-	redirect '/homepage'
+	name = params["name"]
+  password = params["password"]
+
+  if USERS.has_key?(name) && (password == USERS[name])
+    session[:name] = name
+    redirect "/account/#{name.capitalize}"
+  else
+    redirect '/'
+  end
 end
 
 get'/logout' do
@@ -24,10 +35,24 @@ get '/homepage' do
 	erb(:main)
 end
 
+def logged_in(account_name)
+  if session[:name] != nil
+    if session[:name].downcase == account_name.downcase
+      return true
+    else
+      return false
+    end
+  end
+end
+
 get '/account/:name' do
-	accounts = run_csv_processer
-	name = params["name"]
-	erb(:account, :locals => {info: accounts[name], name: name})
+  if logged_in(params["name"])
+  	accounts = run_csv_processer
+  	name = params["name"]
+  	erb(:account, :locals => {info: accounts[name], name: name})
+  else
+    redirect "/"
+  end
 end
 
 get '/full' do
