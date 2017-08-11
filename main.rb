@@ -1,5 +1,26 @@
 require "sinatra"
 require_relative "./csv.rb"
+require_relative "./add_row_function"
+
+# Showing the form for login
+get '/' do
+  erb(:login)
+end
+
+# Processes the login form putting storing values
+get '/user_logged_in' do
+  username = params["username"]
+  password = params["password"]
+
+  open('login.txt', 'a') { |file|
+    str = ""
+    str << username + ","
+    str << password + "\n"
+
+    file << str
+  }
+  erb(:main)
+end
 
 get '/homepage' do
 	erb(:main)
@@ -23,25 +44,6 @@ end
 
 # Processes the form that they typed new row values into.
 get '/add_row' do
-
-  name = params["account"]
-  date = params["date"]
-  payee = params["payee"]
-  category = params["category"]
-  inflow = params["inflow"]
-  outflow = params["outflow"]
-
-  open('temp.txt', 'a') { |file|
-    str = ""
-    str << name + ","
-    str << date + ","
-    str << payee + ","
-    str << category + ","
-    str << inflow + ","
-    str << outflow + "\n"
-
-    file << str
-  }
-
+  success = add_row_function
   erb(:success)
 end
