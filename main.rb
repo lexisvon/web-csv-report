@@ -1,25 +1,23 @@
 require "sinatra"
 require_relative "./csv.rb"
 require_relative "./add_row_function"
+enable :sessions
 
 # Showing the form for login
 get '/' do
   erb(:login)
 end
 
-# Processes the login form putting storing values
 get '/user_logged_in' do
-  username = params["username"]
-  password = params["password"]
+	#find info
+	user = (name = params["name"], password = params["password"])
+	session[:name] = params["name"]
+	redirect '/homepage'
+end
 
-  open('login.txt', 'a') { |file|
-    str = ""
-    str << username + ","
-    str << password + "\n"
-
-    file << str
-  }
-  erb(:main)
+get'/logout' do
+	session.clear
+	redirect '/'
 end
 
 get '/homepage' do

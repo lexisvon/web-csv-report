@@ -7,14 +7,15 @@ def add_row_function
   inflow = params["inflow"]
   outflow = params["outflow"]
 
-  open('temp.txt', 'a') { |file|
+  open('accounts.csv', 'a') { |file|
     str = ""
+    str << "\n"
     str << name + ","
     str << date + ","
     str << payee + ","
     str << category + ","
     str << inflow + ","
-    str << outflow + "\n"
+    str << outflow
 
     file << str
   }
