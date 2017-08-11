@@ -16,7 +16,7 @@ end
 get '/user_logged_in' do
 	#find info
 	name = params["name"]
-  password = params["password"]
+password = params["password"]
 
   if USERS.has_key?(name) && (password == USERS[name])
     session[:name] = name
