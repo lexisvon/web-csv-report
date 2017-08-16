@@ -1,20 +1,21 @@
 <div class="container flex">
-	<section class="col-1-4 nav">
-		<header class="txt-align-cntr">
+	<section class="col-1-4 nav txt-align-cntr">
+		<header>
 			<h1>Welcome <%= name %>!</h1>
 		</header>
 		<a href="login.erb">Logout</a>
 	</section>
 	<section class="col-3-4 table">
-		<header>
-			<h2><%= name %> ... Balance: $<%= info[:tally].round(2) %></h2>
+		<header class="txt-align-cntr">
+			<h2><%= name %> ... Balance: <span>$<%= info[:tally].round(2) %></span></h2>
 		</header>
 		<table>
 			<tr>
 				<th>Category</th>
 				<th>Total Spent</th>
 				<th>Average Transaction</th>
-			</tr><%info[:categories].each do |category, c_info| %>
+			</tr>
+			<%info[:categories].each do |category, c_info| %>
 			<tr>
 				<td><%= category %></td>
 				<td>$<%= c_info[:tally].round(2).to_s %></td>
@@ -24,7 +25,3 @@
 		</table>
 	</section>
 </div>
-
-
-
-

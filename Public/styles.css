@@ -57,11 +57,18 @@ h2 {
 .login h2 {
   color: #7B54DF;
 }
+.table h2 span {
+  color: #58C75B;
+}
+.table h2 {
+  color: #445157;
+  margin-bottom: 50px;
+}
 .nav h1 {
   color: #fff;
   font-size: 4rem;
   line-height: 70px;
-  margin-top: 40px;
+  margin-top: 250px;
 }
 /*-- 1.2 - Body Copy --*/
 ul li {
@@ -87,7 +94,7 @@ a:hover {
   background-color: #01C0EF;
   width: 155px;
 }
-.welcome div a, input[type="submit"] {
+.welcome div a, input[type="submit"], .nav a {
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
   -moz-border-radius: 20px;
@@ -132,6 +139,10 @@ input[type="submit"], .nav {
 .login a:hover {
   color: #7B54DF;
 }
+.nav a {
+  color: #fff;
+  background-color: #7B54DF;
+}
 /*-- 1.5 - Tables --*/
 table {
   border-collapse: collapse;
@@ -141,6 +152,10 @@ table {
 }
 table tr:first-child th:first-child {
   width: 350px;
+  padding-left: 10px;
+}
+table tr td:first-child {
+  color: #7B54DF;
 }
 table tr:first-child th:nth-child(2), table tr:first-child th:last-child {
   width: 250px;
@@ -151,19 +166,21 @@ table tr td:nth-child(2), table tr td:last-child {
 table tr:first-child th:first-child {
   text-align: left;
 }
-tr td{
+tr td, table tr:first-child th{
   padding: 10px;
 }
 tr:last-child td {
   border: none;
 }
-table tr:first-child th {
-  border-bottom: 2px solid black;
-}
 table tr:nth-child(3), table tr:nth-child(5), table tr:nth-child(7), table tr:nth-child(9), table tr:nth-child(11) {
   background-color: #EFEFEF;
 }
-
+table tbody tr:first-child {
+  background-color: #445157;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: .9rem;
+}
 
 
 /*--------------------------------------------------------------
@@ -193,7 +210,7 @@ section {
 .table {
   width: 60%;
   margin: 0 auto;
-  margin-top: 145px;
+  margin-top: 100px;
 }
 .login {
   margin-top: 250px;
