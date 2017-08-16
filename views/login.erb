@@ -1,10 +1,27 @@
-
-<h1>Welcome</h1>
-<h2>Login</h2>
-<form action="/user_logged_in">
-	<label for="name">Name</label>
-	<input type="text" name="name">
-	<label for="password">password</label>
-	<input type="password" name="password">
-	<input type="submit">
-</form>
+<div class="container flex">
+<section class="col-1-2 txt-align-cntr welcome">
+	<header>
+		<h1>Meridian Credit Union</h1>
+	</header>
+	<h2>What it means to be First.</h2>
+	<ul>
+		<li>Doing what’s right for our customers</li>
+		<li>Earning a spot as one of America’s Best Banks</li>
+		<li>Loans designed to do the most for our customers</li>
+		<li>Supporting our local communities</li>
+	</ul>
+</section>
+<section class="col-1-2 txt-align-cntr login">
+	<header>
+		<form action="/user_logged_in">
+			<label for="name">Name</label>
+			<input type="text" name="name" placeholder="Username">
+			<label for="password">password</label>
+			<input type="password" name="password" placeholder="Password">
+			<input type="submit">
+		</form>
+	</header>
+	<a href="#">Create Account</a>
+	<a href="#">Forgot Password?</a>
+</section>
+</div>
