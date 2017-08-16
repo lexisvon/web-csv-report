@@ -16,7 +16,7 @@ end
 get '/user_logged_in' do
 	#find info
 	name = params["name"]
-password = params["password"]
+  password = params["password"]
 
   if USERS.has_key?(name) && (password == USERS[name])
     session[:name] = name
@@ -35,18 +35,20 @@ get '/homepage' do
 	erb(:main)
 end
 
-def logged_in(account_name)
+def logged_in
   if session[:name] != nil
-    if session[:name].downcase == account_name.downcase
-      return true
-    else
-      return false
-    end
+    return true
   end
 end
 
+def logged_in_as(account)
+    if session[:name].downcase == account.downcase
+      return true
+    end
+end
+
 get '/account/:name' do
-  if logged_in(params["name"])
+  if logged_in_as(params["name"])
   	accounts = run_csv_processer
   	name = params["name"]
   	erb(:account, :locals => {info: accounts[name], name: name})
@@ -56,7 +58,7 @@ get '/account/:name' do
 end
 
 get '/full' do
- if logged_in(params["name"])
+ if logged_in
 	accounts = run_csv_processer
 	erb(:full, :locals => {:accounts => accounts})
  else
@@ -66,7 +68,7 @@ end
 
 # Showing the form that they type new row values into.
 get '/add_row_form' do
-if logged_in(params["name"])
+if logged_in
   erb(:add_row_form)
  else
     redirect "/"
@@ -75,7 +77,7 @@ end
 
 # Processes the form that they typed new row values into.
 get '/add_row' do
- if logged_in(params["name"])
+ if logged_in
   success = add_row_function
   erb(:success)
  else
